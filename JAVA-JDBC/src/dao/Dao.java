@@ -24,6 +24,8 @@ public class Dao {
 	
 	public static final String GET_ALL_PERSONAS = "select * from persona";
 	public static final String GET_PERSONA_BY_ID = "select * from persona where id = ?";
+	public static final String INSERT_PERSONA = "insert into persona set id = ?, nombre = ?, apellido = ?";
+	public static final String UPDATE_PERSONA = "update persona (nombre, apelido) values (?,?) where id = ?";
 
 	public void connectar() throws SQLException {
 		String url = CONNECTION;
@@ -71,6 +73,24 @@ public class Dao {
             }
         }
     	return personaList;	
+	}
+
+	public void insertNewPersona(Persona persona) throws SQLException {
+		try (PreparedStatement ps =  conexion.prepareStatement(INSERT_PERSONA)) { 
+			ps.setInt(1, persona.getId());
+			ps.setString(2, persona.getNombre());
+			ps.setString(3, persona.getApellido());
+            ps.executeUpdate();
+        }
+	}
+
+	public void updatePersona(Persona persona) throws SQLException {
+		try (PreparedStatement ps =  conexion.prepareStatement(UPDATE_PERSONA)) { 
+			ps.setString(1, persona.getNombre());
+			ps.setString(2, persona.getApellido());
+			ps.setInt(3, persona.getId());
+            ps.executeUpdate();
+        }
 	}
 
 }
