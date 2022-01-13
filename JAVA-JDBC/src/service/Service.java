@@ -10,7 +10,7 @@ public class Service {
 	Dao dao;
 	
 	public Service() {
-		Dao dao = new Dao();
+		dao = new Dao();
 	}
 
 	public void init() {
