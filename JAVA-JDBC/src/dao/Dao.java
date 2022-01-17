@@ -14,6 +14,7 @@ public class Dao {
 	
 	private Connection conexion;	
 	
+	//Constantes. Deberían estar en una clase de constanes en el pck utils
 	public static final String SCHEMA_NAME = "NombreSchemaBaseDeDatos";
 	public static final String CONNECTION = 
 			"jdbc:mysql://localhost:3306/" + 
@@ -24,8 +25,8 @@ public class Dao {
 	
 	public static final String GET_ALL_PERSONAS = "select * from persona";
 	public static final String GET_PERSONA_BY_ID = "select * from persona where id = ?";
-	public static final String UPDATE_PERSONA = "uptate persona set id = ?, nombre = ?, apellido = ?";
-	public static final String INSERT_PERSONA = "insert into persona (nombre, apelido) values (?,?) where id = ?";
+	public static final String UPDATE_PERSONA = "uptate persona set nombre = ?, apellido = ? where id = ?";
+	public static final String INSERT_PERSONA = "insert into persona (nombre, apellido) values (?,?)";
 
 	public void connectar() throws SQLException {
 		String url = CONNECTION;
