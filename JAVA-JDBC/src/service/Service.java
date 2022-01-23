@@ -63,7 +63,7 @@ public class Service {
 		
 		//recuperamos un elemento
 		Persona persona = dao.getPersonaById(1);
-		System.out.println(persona.toString());
+		if (persona != null) System.out.println(persona.toString());
 		
 		//desconectamos
 		dao.desconectar();
