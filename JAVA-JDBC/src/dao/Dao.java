@@ -14,14 +14,14 @@ public class Dao {
 	
 	private Connection conexion;	
 	
-	//Constantes. Deberían estar en una clase de constanes en el pck utils
+	//Constantes. Deberï¿½an estar en una clase de constanes en el pck utils
 	public static final String SCHEMA_NAME = "NombreSchemaBaseDeDatos";
 	public static final String CONNECTION = 
 			"jdbc:mysql://localhost:3306/" + 
 			SCHEMA_NAME + 
 			"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
 	public static final String USER_CONNECTION = "nombreUsuario";
-	public static final String PASS_CONNECTION = "contraseña";
+	public static final String PASS_CONNECTION = "contraseï¿½a";
 	
 	public static final String GET_ALL_PERSONAS = "select * from persona";
 	public static final String GET_PERSONA_BY_ID = "select * from persona where id = ?";
@@ -76,9 +76,8 @@ public class Dao {
 
 	public void insertNewPersona(Persona persona) throws SQLException {
 		try (PreparedStatement ps =  conexion.prepareStatement(INSERT_PERSONA)) { 
-			ps.setInt(1, persona.getId());
-			ps.setString(2, persona.getNombre());
-			ps.setString(3, persona.getApellido());
+			ps.setString(1, persona.getNombre());
+			ps.setString(2, persona.getApellido());
             ps.executeUpdate();
         }
 	}
